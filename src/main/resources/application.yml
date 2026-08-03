@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: next-grid-strategy
+
+server:
+  port: 8083
+
+next:
+  api:
+    client-id: ${NEXT_CLIENT_ID:}
+    client-secret: ${NEXT_CLIENT_SECRET:}
+    account-id: ${NEXT_ACCOUNT_ID:acc_main}
+  engine:
+    max-consecutive-failures: 5
+
+grid:
+  symbol: AAPL
+  buy-dip-rate: 0.003
+  target-rate: 0.01
+  max-decay-count: 3
+  decay-minutes: 30
+  chase-rate: 0.005
+  budget-ratio: 0.5
+  poll-seconds: 30
