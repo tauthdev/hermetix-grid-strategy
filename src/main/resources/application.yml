@@ -14,7 +14,7 @@ next:
     max-consecutive-failures: 5
 
 grid:
-  symbol: AAPL
+  symbols: AAPL,TSLA
   buy-dip-rate: 0.003
   target-rate: 0.01
   max-decay-count: 3

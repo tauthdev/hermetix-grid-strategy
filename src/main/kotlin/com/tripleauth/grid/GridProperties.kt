@@ -5,8 +5,8 @@ import java.math.BigDecimal
 
 @ConfigurationProperties(prefix = "grid")
 data class GridProperties(
-    /** 감시 종목 */
-    val symbol: String = "AAPL",
+    /** 감시 종목 목록. 종목마다 독립 사이클로 동작한다 */
+    val symbols: List<String> = listOf("AAPL"),
     /** 매수 지정가: 현재가 대비 이만큼 아래 (0.003 = -0.3%) */
     val buyDipRate: BigDecimal = BigDecimal("0.003"),
     /** 목표 수익 단위. 매도가 = 평균단가 x (1 + targetRate x 남은 count) */
@@ -17,7 +17,7 @@ data class GridProperties(
     val decayMinutes: Long = 30,
     /** 가격이 매수 지정가보다 이만큼 위로 달아나면 주문을 취소하고 따라간다 (0.005 = 0.5%) */
     val chaseRate: BigDecimal = BigDecimal("0.005"),
-    /** 주문 가능 현금 중 진입에 사용할 비율 */
+    /** 주문 가능 현금 중 진입에 사용할 비율. 종목 수로 나눠 배분된다 */
     val budgetRatio: BigDecimal = BigDecimal("0.5"),
     /** 전략 호출 주기 (초) */
     val pollSeconds: Long = 30,

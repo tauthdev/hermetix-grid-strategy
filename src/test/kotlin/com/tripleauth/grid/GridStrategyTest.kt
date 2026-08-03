@@ -19,7 +19,7 @@ import java.time.ZonedDateTime
 class GridStrategyTest {
 
     private val properties = GridProperties(
-        symbol = "AAPL",
+        symbols = listOf("AAPL"),
         buyDipRate = BigDecimal("0.003"),
         targetRate = BigDecimal("0.01"),
         maxDecayCount = 3,
@@ -100,7 +100,7 @@ class GridStrategyTest {
     @Test
     fun `매도 미체결이 decayMinutes 를 넘기면 취소하고 count 를 줄인다`() {
         val now = ZonedDateTime.now()
-        strategy.sellPlacedAt = now.minusMinutes(31)
+        strategy.sellPlacedAt["AAPL"] = now.minusMinutes(31)
 
         val signals = strategy.decide(
             context(price = "100", holdingQty = "50", openOrders = listOf(order(OrderSide.SELL, "103.00")), now = now),
@@ -108,7 +108,7 @@ class GridStrategyTest {
 
         assertThat(signals).hasSize(1)
         assertThat(signals[0]).isInstanceOf(Signal.Cancel::class.java)
-        assertThat(strategy.decayCount).isEqualTo(2)
+        assertThat(strategy.decayCount["AAPL"]).isEqualTo(2)
 
         // 다음 틱: 낮아진 목표로 재주문
         val next = strategy.decide(context(price = "100", holdingQty = "50", now = now))
@@ -117,7 +117,7 @@ class GridStrategyTest {
 
     @Test
     fun `count 소진 후 수익권이면 시장가로 청산한다`() {
-        strategy.decayCount = 0
+        strategy.decayCount["AAPL"] = 0
 
         val signals = strategy.decide(context(price = "100.5", holdingQty = "50", avgEntry = "100"))
 
@@ -128,7 +128,7 @@ class GridStrategyTest {
 
     @Test
     fun `count 소진 후 손실권이면 본전 지정가로 대기한다`() {
-        strategy.decayCount = 0
+        strategy.decayCount["AAPL"] = 0
 
         val signals = strategy.decide(context(price = "98", holdingQty = "50", avgEntry = "100"))
 
@@ -140,10 +140,10 @@ class GridStrategyTest {
 
     @Test
     fun `포지션이 사라지면 count 가 초기화된다`() {
-        strategy.decayCount = 0
+        strategy.decayCount["AAPL"] = 0
 
         strategy.decide(context(price = "100"))
 
-        assertThat(strategy.decayCount).isEqualTo(3)
+        assertThat(strategy.decayCount["AAPL"]).isEqualTo(3)
     }
 }
