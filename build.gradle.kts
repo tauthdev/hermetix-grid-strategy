@@ -21,7 +21,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.tauthdev:hermetix-trading-core:0.3.0")
+    implementation("com.github.tauthdev.hermetix-trading-core:hermetix-engine:0.5.0")
     implementation("org.springframework.boot:spring-boot-starter-web")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
