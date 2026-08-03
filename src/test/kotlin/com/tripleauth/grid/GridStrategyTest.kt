@@ -1,14 +1,14 @@
 package com.tripleauth.grid
 
-import com.tripleauth.nexttrading.client.dto.AccountResponse
-import com.tripleauth.nexttrading.client.dto.Holding
-import com.tripleauth.nexttrading.client.dto.OrderResponse
-import com.tripleauth.nexttrading.client.dto.OrderSide
-import com.tripleauth.nexttrading.client.dto.OrderStatus
-import com.tripleauth.nexttrading.client.dto.OrderType
-import com.tripleauth.nexttrading.client.dto.Quote
-import com.tripleauth.nexttrading.strategy.Signal
-import com.tripleauth.nexttrading.strategy.StrategyContext
+import com.tripleauth.hermetix.client.dto.AccountResponse
+import com.tripleauth.hermetix.client.dto.Holding
+import com.tripleauth.hermetix.client.dto.OrderResponse
+import com.tripleauth.hermetix.client.dto.OrderSide
+import com.tripleauth.hermetix.client.dto.OrderStatus
+import com.tripleauth.hermetix.client.dto.OrderType
+import com.tripleauth.hermetix.client.dto.Quote
+import com.tripleauth.hermetix.strategy.Signal
+import com.tripleauth.hermetix.strategy.StrategyContext
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

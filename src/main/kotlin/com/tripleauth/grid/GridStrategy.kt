@@ -1,13 +1,13 @@
 package com.tripleauth.grid
 
-import com.tripleauth.nexttrading.client.dto.CandleInterval
-import com.tripleauth.nexttrading.client.dto.OrderSide
-import com.tripleauth.nexttrading.client.dto.OrderType
-import com.tripleauth.nexttrading.client.dto.TimeInForce
-import com.tripleauth.nexttrading.strategy.Signal
-import com.tripleauth.nexttrading.strategy.StrategyContext
-import com.tripleauth.nexttrading.strategy.StrategySpec
-import com.tripleauth.nexttrading.strategy.TradingStrategy
+import com.tripleauth.hermetix.client.dto.CandleInterval
+import com.tripleauth.hermetix.client.dto.OrderSide
+import com.tripleauth.hermetix.client.dto.OrderType
+import com.tripleauth.hermetix.client.dto.TimeInForce
+import com.tripleauth.hermetix.strategy.Signal
+import com.tripleauth.hermetix.strategy.StrategyContext
+import com.tripleauth.hermetix.strategy.StrategySpec
+import com.tripleauth.hermetix.strategy.TradingStrategy
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.stereotype.Component
 import java.math.BigDecimal

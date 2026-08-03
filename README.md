@@ -1,6 +1,6 @@
-# next-grid-strategy
+# hermetix-grid-strategy
 
-**목표가 스캘핑 전략** — [next-trading-core](https://github.com/tauthdev/next-trading-core) 기반 넥스트증권 모의투자 봇.
+**목표가 스캘핑 전략** — [hermetix-trading-core](https://github.com/tauthdev/hermetix-trading-core) 기반 넥스트증권 모의투자 봇.
 
 원본은 Hana 프로젝트의 Bybit FeePlan(메이커 리베이트 숏 스캘핑)입니다. 모의투자에는 리베이트/PostOnly/공매도가 없으므로, 핵심 사이클을 **매수→매도 방향으로 뒤집어** 순수 시세차익 전략으로 이식했습니다.
 

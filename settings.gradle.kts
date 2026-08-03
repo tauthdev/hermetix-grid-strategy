@@ -1,1 +1,1 @@
-rootProject.name = "next-grid-strategy"
+rootProject.name = "hermetix-grid-strategy"
