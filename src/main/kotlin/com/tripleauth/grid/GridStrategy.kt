@@ -43,8 +43,8 @@ class GridStrategy(
     override val spec = StrategySpec(
         name = "grid",
         symbols = properties.symbols,
-        candleInterval = CandleInterval.MIN_5,
-        candleLimit = 2, // 이 전략은 캔들을 쓰지 않지만 컨텍스트 규격상 최소값을 둔다
+        candleInterval = CandleInterval.DAY_1, // 캔들 미사용 — 모든 브로커(KRX 포함)가 지원하는 일봉으로 최소 요청
+        candleLimit = 2,
         pollInterval = Duration.ofSeconds(properties.pollSeconds),
     )
 
