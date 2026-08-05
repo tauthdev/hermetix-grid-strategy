@@ -53,7 +53,7 @@
 ## 주의사항
 
 - **모의투자 학습용입니다.** 실제 투자 판단의 근거로 사용하지 마세요.
-- **브로커 전환 가능**: 이 전략은 캔들을 쓰지 않아 KRX 브로커(kis/kiwoom)에서도 그대로 동작합니다. `hermetix.broker` 와 종목코드(`symbols: 005930,...`)만 바꾸면 됩니다.
+- **브로커 전환 가능**: 이 전략은 캔들을 쓰지 않아 KRX 브로커(kis/kiwoom)에서도 그대로 동작합니다. **동봉된 `kis`/`kiwoom` 프로파일**로 바로 실행할 수 있고, 지정가는 코어가 KRX 호가단위(1원~1,000원)로 자동 보정합니다.
 - **손절이 없습니다.** 이 전략은 하락 시 본전 지정가로 **무기한 대기**합니다 (원본 FeePlan 의 구조 유지). 하락 추세에 들어가면 자금이 계속 묶입니다. 손절이 필요하면 아래 커스터마이징을 참고하세요.
 - **첫 목표가가 의외로 높습니다.** 기본 설정의 첫 매도 목표는 평균단가 +3% (target-rate 1% × count 3)입니다. 일중 변동 ±1% 안팎의 대형주라면 감쇠를 다 거친 후에야 체결되는 게 정상 동작입니다. 빠른 회전을 원하면 `target-rate: 0.003, max-decay-count: 2` 처럼 낮추세요.
 - **평균단가는 계좌 기준입니다.** 매도 목표의 기준인 `avgEntryPrice` 는 이 전략의 진입가가 아니라 **계좌의 해당 종목 평균 매입 단가**입니다. 수동 매매나 다른 전략으로 같은 종목을 보유한 적 있으면 목표가가 의도와 달라집니다. **같은 심볼을 다른 전략과 동시에 돌리지 마세요.**
@@ -74,7 +74,15 @@
 ## 실행
 
 ```bash
-export NEXT_CLIENT_ID=pk_test_...
-export NEXT_CLIENT_SECRET=sk_test_...
+# 넥스트증권 (미국주식, 기본)
+export NEXT_CLIENT_ID=... NEXT_CLIENT_SECRET=...
 ./gradlew bootRun
+
+# 한국투자증권 모의투자 (KRX - 삼성전자/SK하이닉스 프로파일 동봉)
+export KIS_APPKEY=... KIS_APPSECRET=... KIS_CANO=...
+SPRING_PROFILES_ACTIVE=kis ./gradlew bootRun
+
+# 키움 모의투자 (KRX)
+export KIWOOM_APPKEY=... KIWOOM_SECRETKEY=...
+SPRING_PROFILES_ACTIVE=kiwoom ./gradlew bootRun
 ```
