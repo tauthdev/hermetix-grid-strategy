@@ -1,0 +1,9 @@
+hermetix:
+  broker: kis
+  kis:
+    appkey: ${KIS_APPKEY:}
+    appsecret: ${KIS_APPSECRET:}
+    cano: ${KIS_CANO:}
+
+grid:
+  symbols: 005930,000660     # 지정가는 코어가 KRX 호가단위로 자동 보정

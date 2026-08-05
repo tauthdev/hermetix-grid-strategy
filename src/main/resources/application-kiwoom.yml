@@ -1,0 +1,8 @@
+hermetix:
+  broker: kiwoom
+  kiwoom:
+    appkey: ${KIWOOM_APPKEY:}
+    secretkey: ${KIWOOM_SECRETKEY:}
+
+grid:
+  symbols: 005930,000660
